@@ -12,6 +12,9 @@ public class PostRequestDto {
     @JsonProperty("phone_number")
     private String phoneNumber; // phone_number
 
+    @JsonProperty("OTP")
+    private String OTP;
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -60,6 +63,7 @@ public class PostRequestDto {
                 ", address='" + address + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", OTP='" + OTP + '\'' +
                 '}';
     }
 }
