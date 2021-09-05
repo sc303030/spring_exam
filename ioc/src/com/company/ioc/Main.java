@@ -8,11 +8,9 @@ public class Main {
         // Base64 encoding
 
         // url encoding
-        Encoder encoder = new Encoder();
+        Encoder encoder = new Encoder(new UrlEncoder());
         String result = encoder.encode(url);
 
-        UrlEncoder urlEncoder = new UrlEncoder();
-        String urlResult = urlEncoder.encode(url);
-        System.out.println(urlResult);
+        System.out.println(result);
     }
 }
