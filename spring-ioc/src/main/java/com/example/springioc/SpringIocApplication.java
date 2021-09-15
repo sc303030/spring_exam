@@ -3,6 +3,7 @@ package com.example.springioc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
@@ -14,14 +15,13 @@ public class SpringIocApplication {
         ApplicationContext context = ApplicationContextProvider.getContext();
 
 //        Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
-
 //        UrlEncoder urlEncoder = context.getBean(UrlEncoder.class);
-        Encoder encoder = context.getBean(Encoder.class);
+
+        Encoder encoder = context.getBean("base64Encode", Encoder.class);
         String url = "www.naver.com/book/it?page=106&size=20&name=spring-boot";
         String result = encoder.encode(url);
         System.out.println(result);
     }
-
 }
 
 @Configuration
