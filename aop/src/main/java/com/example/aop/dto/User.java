@@ -1,5 +1,7 @@
 package com.example.aop.dto;
 
+import java.util.Base64;
+
 public class User {
     private String id;
     private String pw;
