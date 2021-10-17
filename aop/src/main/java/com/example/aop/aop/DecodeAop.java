@@ -27,15 +27,22 @@ public class DecodeAop {
         Object[] args = joinPoint.getArgs();
 
         for (Object arg : args){
-            User user = User.class.cast(arg);
-            String base64Email = user.getEmail();
-            String email = new String(Base64.getDecoder().decode(base64Email), "utf-8");
-            user.setEmail(email);
+            if(arg instanceof User){
+                User user = User.class.cast(arg);
+                String base64Email = user.getEmail();
+                String email = new String(Base64.getDecoder().decode(base64Email), "utf-8");
+                user.setEmail(email);
+            }
         }
     }
 
     @AfterReturning(value = "cut() && enableDecode()", returning = "returnObj")
-    public void afterReturn(JoinPoint joinPoint, Object obj){
-
+    public void afterReturn(JoinPoint joinPoint, Object returnObj){
+        if(returnObj instanceof User){
+            User user = User.class.cast(returnObj);
+            String email = user.getEmail();
+            String base64email = Base64.getEncoder().encodeToString(email.getBytes());
+            user.setEmail(base64email);
+        }
     }
 }

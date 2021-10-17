@@ -30,7 +30,7 @@ public class RestApiController {
     }
 
     @Decode
-    @PostMapping("/put")
+    @PutMapping("/put")
     public User put(@RequestBody User user){
         System.out.println("put");
         System.out.println(user);
